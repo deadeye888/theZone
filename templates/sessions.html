@@ -1,0 +1,27 @@
+{% extends 'template.html' %}
+
+{% block navbar %} {% endblock %}
+
+{% block body %}
+	<div class = "main_container">
+		<h1> Session History 👀 </h1>	
+		<table class = "log_table">
+		{% for session in logs %}
+			<div class = "session_container">
+				<tr>
+					<p> {{session}}. {{ logs[session]["name"] }} | {{ logs[session]["start_time"] }} - {{ logs[session]["end_time"] }}</p>
+				</tr>
+				<tr>
+					<p>   Sessions: {{ logs[session]["sessions"] }}</p>
+					<p>   Work Time: {{ logs[session]["work_time"][1]}} minutes </p>	
+					<p>   Break Time: {{ logs[session]["break_time"][1]}}	minutes </p>	
+					<p>   Tasks Completed: {{ logs[session]["completed"]|length }}</p>
+					{% for task in logs[session]["completed"] %}
+						<p> - {{ task }} </p>	
+					{% endfor %}
+				</tr>
+			</div>		
+		{% endfor %}
+		</table>	
+	</div>	
+{% endblock %}

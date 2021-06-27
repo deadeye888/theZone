@@ -1,0 +1,98 @@
+{% extends "template.html" %}
+
+{% block title %}
+Break time!
+{% endblock %}
+
+{% block navbar %} {% endblock %}
+
+{% block body %}
+	<div class="main_container">
+		<div class = "heading">
+			<h1 id = "timer_status"> Take a break! </h1>	
+		</div>	
+		<p class = "session_number"> Session {{ settings["current_session"] }} / {{ settings["sessions"] }} </p>	
+		<p class = "timer" id = "timer">
+			{% if settings["break_time"][0] == 0 %}
+				{{ settings["break_time"][1] }}:00
+			{% else %}
+				{{ settings["break_time"][0] }}:{{ settings["break_time"][1] }}:00
+			{% endif %}
+		</p>	
+		<progress value="0" max="{{ settings['break_time'][2] }}" class = "timer_progress" id = "timer_progress">	</progress>
+		<button onclick = "pause()" id = "timer_btn" class = "button-1"> Pause </button>
+	</div>	
+{% endblock %}
+
+{% block js %}
+	<script type="application/javascript">
+		const timer = document.getElementById("timer");
+		const progressbar = document.getElementById("timer_progress");
+		const timer_btn = document.getElementById("timer_btn");
+		const session_number = document.getElementById("session_number");
+		const status = document.getElementById("timer_status");
+		const delay = 1000; // testing
+
+		let audio = new Audio("../static/Sounds/piano.mp3");
+
+		let counter = progressbar.max;
+		counter++;
+
+		tick(); // bypass initial delay
+		let interval = setInterval(tick, delay);
+
+		function pause() {
+			clearInterval(interval);
+			timer_btn.innerText = "Resume";
+			timer_btn.onclick = function() {resume();}
+		}
+
+		function resume() {
+			interval = setInterval(tick, delay);
+			timer_btn.innerText = "Pause";
+			timer_btn.onclick = function() {pause();}
+		}
+
+		function checkpoint() {
+			fetch(`${window.origin}/workend`, {
+				method : "POST",
+				headers: new Headers({
+					"content-type" : "application/json"
+				})
+			}).then(function(response) {
+				if (response.status == 204) {
+					window.location.href = "/complete";
+				} else {
+					window.location.href = "/work";
+				}
+			});
+		}
+
+		function tick() {
+			if (counter < 1) {
+				audio.play();
+				clearInterval(interval);
+				timer_btn.innerText = "Continue";
+				timer_btn.onclick = function() {checkpoint();}
+				status.innerText = "Time's up!"
+				return;
+			}
+			counter -= 1;
+			progressbar.value = counter;
+
+			let display_time = "";
+			let hours = Math.floor(counter / 3600);
+			let minutes = Math.floor((counter - hours * 3600) / 60);
+			let seconds = counter - hours * 3600 - minutes * 60;
+			if (hours) {
+				display_time += hours + "h ";
+			}
+			if (minutes) {
+				display_time += minutes + "m ";
+			}
+			display_time += seconds + 's';
+			timer.innerText = display_time;
+			document.title = "Rest: " + display_time;
+		}
+	</script>
+{% endblock %}

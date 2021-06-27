@@ -1,0 +1,159 @@
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-family: "Lato", Helverica, sans-serif;
+}
+ 
+.navbar {
+	background-color: rgb(28,32,35);
+	font-weight: bold;
+	color: white;
+	display: block;
+	text-align: center;
+}
+
+.nav_links ul li {
+	display: inline-block;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.nav_links ul li a {
+	color: white;
+	transition: 0s color;
+}
+
+.nav_links ul li a:hover {
+	color: lightgrey;
+}
+
+.banner {
+	font-size: 40;
+}
+
+.heading {
+	display: block;
+	font-size: 20;
+	text-align: center;
+	margin: 1rem;
+}
+
+.main_container {
+	width: 60%;
+	margin: auto;
+	text-align: center;
+}
+
+.timer {
+	display: block;
+	font-size: 50;
+	text-align: center;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
+.timer_progress {
+	display: block;
+	width: 70%;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+.form {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;	
+	font-size: 1rem;
+}
+
+.form label {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	margin-top: 20px;
+	text-align: center	;
+}
+
+.form input {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	width: 80%;
+	padding: 10px 10px;
+	margin-left: 10%;
+}
+
+.button-1 {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	margin: auto;
+	margin-top: 20px;
+	padding: 5px;
+	font-size: 15;
+	width: 20%;
+	border: 1px solid black;
+	background-color: lightgray;
+	cursor: pointer;
+	transition: background-color 0.1s;
+}
+
+.button-1:hover {
+	background-color: lightslategray;
+}
+
+.input_container {
+	display: inline-block;
+	height: 50px;
+	width: 100%;
+}
+
+.input_container input {
+	border: 1px solid black;
+	padding: 10px;
+	height: 60%;
+}
+
+.input_container button {
+	height: 60%;
+	width: 45px;
+}
+
+.todolist li {
+	font-size: 18px;
+	list-style: none;
+	line-height: 40px;
+	border-radius: 8px;
+	background-color: lightgray;
+	margin-bottom: 5px;
+	position: relative;
+	cursor: pointer;
+}
+
+.todolist li button i {
+	top: 15px;
+	right: 20px;
+	position: absolute;
+	display: none;
+}
+
+.todolist li:hover button i {
+	display: inline-block;
+}
+
+.button-todo {
+	outline: none;
+	border: none;
+}
+
+.button-todo:hover {
+	cursor: pointer;
+}
+
+#todolist-view {
+	margin-top: 20px;
+}
+
+.session_container {
+	margin-top: 20px;
+	border: 1px dashed black;
+}

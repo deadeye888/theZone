@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+		<title> {% block title %} Default Title {% endblock %} </title>	
+	</head>
+	<body>	
+		<nav class = "navbar"> 
+			<h1 class = "banner"><i> theZONE </i></h1>	
+			<div class = "nav_links">
+				<ul>
+					<li><a href="{{ url_for('root') }}">Setup</a></li>
+					<li><a href="{{ url_for('sessions') }}">Sessions</a></li>
+				</ul>	
+			</div>	
+		</nav>
+		<div class = "main_container">
+		{% block body %} {% endblock %}
+		</div>	
+	</body>	
+	{% block js %} 
+	{% endblock %}
+</html>	

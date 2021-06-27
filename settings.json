@@ -1,0 +1,24 @@
+{
+    "work_time": [
+        0,
+        1,
+        60
+    ],
+    "break_time": [
+        0,
+        1,
+        60
+    ],
+    "sessions": 3,
+    "current_session": 1,
+    "name": "Session",
+    "raw_time": [
+        "1",
+        "1"
+    ],
+    "start_time": "02:12 PM, 27-06-2021",
+    "tasks": [
+        "fsfsf"
+    ],
+    "completed": []
+}

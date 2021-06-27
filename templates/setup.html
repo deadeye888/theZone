@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+
+{% block title %}
+theZone
+{% endblock %}
+
+{% block navbar %} {% endblock %}
+
+{% block body %}
+	<div class = "heading">
+		<h1> SETUP TIMER </h1>	
+	</div>	
+	<form class = "form" action = "{{ url_for('root') }}" method = "POST">
+			<label class = "setup_form_label" for = "name">Description: </label>	
+			<input class = "setup_form_input" type="string" name="name" value = "Session">
+
+			<label class = "setup_form_label" for = "sessions">Sessions: </label>	
+			<input class = "setup_form_input" type="number" name="sessions" value = "3">
+
+			<label class = "setup_form_label" for = "work_time">Work Time: (minutes)</label>	
+			<input class = "setup_form_input" type="number" name="work_time" value = "25">
+
+			<label class = "setup_form_label" for = "break_time">Break Time: (minutes)</label>	
+			<input class = "setup_form_input" type="number" name="break_time" value = "5">	
+
+			<button class = "button-1" type = "submit"> Next </button>	
+	</form>
+{% endblock %}

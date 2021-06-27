@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+{% block title %} theZone - TASKS {% endblock %}
+
+{% block navbar %} {% endblock %}
+
+{% block body %}
+	<div class="heading">
+		<h1> SETUP TASKS </h1>	
+	</div>
+	<div class = "main_container">
+		<div class = "input_container">
+			<input id = "todo_input" type = "string" name = "todo_input" placeholder = "Add a task">
+			<button id = "todo_button" type = "submit" onclick = "add_task()"> ADD </button>
+		</div>
+		<ul class = "todolist">
+		</ul>	
+		<form action = "{{ url_for('work') }}" method = "POST">
+			<button class = "button-1" type = "submit"> Begin </button>	
+		</form>	
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script src = "{{ url_for('static', filename='todo.js') }}"></script>
+{% endblock %}
